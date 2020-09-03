@@ -27,7 +27,7 @@ gulp.task("css", function () {
     ]))
     .pipe(gulp.dest("build/css"))
     .pipe(csso())
-    .pipe(rename("style.min.css"))
+    // .pipe(rename("style.min.css"))
     .pipe(sourcemap.write("."))
     .pipe(gulp.dest("build/css"))
     .pipe(server.stream());
@@ -47,7 +47,7 @@ gulp.task("html", function () {
     .pipe(posthtml([
       include()
     ]))
-    // .pipe(htmlmin({ collapseWhitespace: true })) В случае, если нужно минифицировать html.
+    // .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest("build"));
 });
 
@@ -65,7 +65,7 @@ gulp.task("js", function () {
   return gulp.src('source/js/*.js')
     .pipe(uglify())
     .pipe(rename(function (path) {
-      // path.basename += ".min"; В случае, если нужно минифицировать js.
+      // path.basename += ".min";
       path.extname = ".js";
     }))
     .pipe(gulp.dest("build/js"));
